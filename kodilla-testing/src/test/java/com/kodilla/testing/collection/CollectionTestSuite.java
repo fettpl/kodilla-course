@@ -29,13 +29,13 @@ public class CollectionTestSuite {
         // given
         ArrayList<Integer> numbers = new ArrayList<>();
         numbers.add(1);
-        numbers.add(4);
+        numbers.add(8);
         numbers.add(9);
-        numbers.add(22);
+        numbers.add(18);
 
         ArrayList<Integer> properList = new ArrayList<>();
-        properList.add(4);
-        properList.add(22);
+        properList.add(8);
+        properList.add(18);
 
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
 
