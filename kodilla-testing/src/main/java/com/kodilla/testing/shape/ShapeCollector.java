@@ -7,10 +7,12 @@ public class ShapeCollector {
     ArrayList<Shape> shapes = new ArrayList<>();
 
     public void addFigure(Shape shape) {
+
         shapes.add(shape);
     }
 
     public void removeFigure(Shape shape) {
+
         shapes.remove(shape);
     }
 
@@ -21,6 +23,7 @@ public class ShapeCollector {
     }
 
     public void showFigures() {
+
         System.out.println(shapes);
     }
 
