@@ -2,27 +2,22 @@ package com.kodilla.stream.forumuser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 public final class Forum {
     private final List<ForumUser> forumUserList = new ArrayList<>();
 
     public Forum() {
-        forumUserList.add(new ForumUser(0001, "user01", 'M', 1971-1-1,
-                42));
-        forumUserList.add(new ForumUser(0002, "user02", 'F', 1984-6-22,
-                30));
-        forumUserList.add(new ForumUser(0003, "user03", 'M', 1995-12-30,
-                2));
-        forumUserList.add(new ForumUser(0004, "user04", 'M', 1988-2-1,
-                18));
-        forumUserList.add(new ForumUser(0005, "user05", 'F', 1988-6-1,
-                0));
-        forumUserList.add(new ForumUser(0006, "user06", 'F', 2000-11-15,
-                42));
-        forumUserList.add(new ForumUser(0007, "user07", 'F', 2017-1-12));
+        forumUserList.add(new ForumUser(1001, "user01", 'M', LocalDate.of(1971,1,1), 42));
+        forumUserList.add(new ForumUser(1002, "user02", 'F', LocalDate.of(1979,12,18), 33));
+        forumUserList.add(new ForumUser(1003, "user03", 'M', LocalDate.of(2004,6,29), 100));
+        forumUserList.add(new ForumUser(1004, "user04", 'M', LocalDate.of(1992,8,6), 0));
+        forumUserList.add(new ForumUser(1005, "user05", 'F', LocalDate.of(2002,3,21), 2));
+        forumUserList.add(new ForumUser(1006, "user06", 'F', LocalDate.of(1988,11,17), 144));
+        forumUserList.add(new ForumUser(1007, "user07", 'M', LocalDate.of(1988,05,03), 79));
     }
 
-    public List<Forum> getUserList() {
+    public List<ForumUser> getUserList() {
         return new ArrayList<>(forumUserList);
     }
 }
