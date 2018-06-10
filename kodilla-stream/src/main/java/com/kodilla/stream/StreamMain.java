@@ -16,7 +16,7 @@ public class StreamMain {
         LocalDate matureAgeDate = LocalDate.now(ZoneOffset.UTC).minusYears(18);
 
         System.out.println("This is the Final Lists of Users:");
-        Map<int, ForumUser> theFinalListsOfUsers = theForum.getUserList().stream()
+        Map<Integer, ForumUser> theFinalListsOfUsers = theForum.getUserList().stream()
                 .filter(u -> u.getSex() == 'M')
                 .filter(u -> u.getBirthDate().isBefore(matureAgeDate))
                 .filter(u -> u.getTotalPosts() >= 1)
@@ -26,7 +26,7 @@ public class StreamMain {
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .forEach(System.out::println);
 
-        System.out.println("This is the Book Directory:");
+        System.out.println("\nThis is the Book Directory:");
         BookDirectory theBookDirectory = new BookDirectory();
         String theResultStringOfBooks = theBookDirectory.getList().stream()
                 .filter(book -> book.getYearOfPublication() > 2005)
