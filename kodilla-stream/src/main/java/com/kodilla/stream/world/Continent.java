@@ -1,9 +1,21 @@
 package com.kodilla.stream.world;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public final class Continent {
-    List<Country> europe = new ArrayList<>();
-    europe.add(new Country().BigDecimal("38000000"));
+    private String contintenName;
+    private List<Country> countries;
+
+    public Continent(String contintenName, List<Country> countries) {
+        this.contintenName = contintenName;
+        this.countries = countries;
+    }
+
+    public String getContintenName() {
+        return contintenName;
+    }
+
+    public List<Country> getCountries() {
+        return countries;
+    }
 }
