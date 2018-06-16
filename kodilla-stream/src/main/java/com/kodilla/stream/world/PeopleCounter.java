@@ -6,20 +6,20 @@ import java.math.BigInteger;
 
 public class PeopleCounter {
     public static void main(String [] args) {
-        List<Country> Europe = new ArrayList<>();
-        Europe.add(new Country("Poland", "38000000"));
-        Europe.add(new Country("Germany", "128000000"));
+        List<Country> europeCoutries = new ArrayList<>();
+        europeCoutries.add(new Country("Poland", new BigInteger("38000000")));
+        europeCoutries.add(new Country("Germany", new BigInteger("128000000")));
+        Continent europe = new Continent("Europe", europeCoutries);
+        List<Country> asiaCoutries = new ArrayList<>();
+        asiaCoutries.add(new Country("China", new BigInteger("600000000")));
+        asiaCoutries.add(new Country("Japan", new BigInteger("200000000")));
+        Continent asia = new Continent("Asia", asiaCoutries);
 
-        List<Country> Asia = new ArrayList<>();
-        Asia.add(new Country("China", "600000000"));
-        Asia.add(new Country("Japan", "200000000"));
-
-        @Override
         List<Continent> continents = new ArrayList<>();
-        continents.add(Europe);
-        continents.add(Asia);
+        continents.add(europe);
+        continents.add(asia);
 
-        World world = new World();
-        world.getPeopleQuantity();
+        World world = new World(continents);
+        System.out.println(world.getPeopleQuantity());
     }
 }
