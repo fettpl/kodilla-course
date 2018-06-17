@@ -1,19 +1,23 @@
 package com.kodilla.stream.array;
 
 import java.util.Arrays;
+import java.util.OptionalDouble;
+import java.util.stream.Stream;
 
 public interface ArrayOperations {
-    static String getAverage(int[] numbers) {
-        Arrays.stream(numbers).forEach(System.out::println);
+    static double getAverage(int[] numbers) {
+        Stream<Integer> streamOfInts = Arrays.stream(numbers).boxed();
+        streamOfInts.forEach(System.out::println);
 
-        return "OK";
+        Stream<Integer> streamOfInts2 = Arrays.stream(numbers).boxed();
+        OptionalDouble median = streamOfInts2
+                .mapToDouble(i -> i)
+                .average();
 
-        /*
-        int sumOfNumbers = Arrays.stream(numbers).sum();
+        double finalMedian = median.getAsDouble();
 
-        double median = (double) sumOfNumbers / numbers.length()
+        System.out.println("The median for this set of numbers is: " + finalMedian);
 
-        return median;
-        */
+        return finalMedian;
     }
 }

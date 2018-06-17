@@ -23,7 +23,6 @@ public class BookTestSuite {
         }
         Assert.assertEquals(3, numberOfBooksPublicatedAfter2007);
     }
-}
 
     @Test
     public void testGetListUsingIntStream() {
@@ -39,3 +38,5 @@ public class BookTestSuite {
                 .count();
         Assert.assertEquals(3, numberOfBooksPublicatedAfter2007);
     }
+}
+
