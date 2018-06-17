@@ -1,12 +1,19 @@
 package com.kodilla.stream.array;
 
-import java.util.ArrayList;
-import java.util.stream.IntStream;
+import java.util.Arrays;
 
 public interface ArrayOperations {
-    static int getAverage(int[] numbers) {
-        List<int> numbersList = IntStream.range(0, ((ArrayList) numbers).getList());
+    static String getAverage(int[] numbers) {
+        Arrays.stream(numbers).forEach(System.out::println);
 
-        double median = (double) IntStream.range(0, ((ArrayList) numbers).average());
+        return "OK";
+
+        /*
+        int sumOfNumbers = Arrays.stream(numbers).sum();
+
+        double median = (double) sumOfNumbers / numbers.length()
+
+        return median;
+        */
     }
 }

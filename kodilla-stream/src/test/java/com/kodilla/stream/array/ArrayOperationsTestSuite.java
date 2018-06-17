@@ -9,14 +9,18 @@ public class ArrayOperationsTestSuite {
     @Test
     public void testGetAverage() {
         //Given
-        List<int> numbers = new ArrayList<>();
+        int[] numbers = new int[5];
+        numbers[1] = 4;
+        numbers[2] = 6;
+        numbers[3] = 5;
+        numbers[4] = 5;
+        numbers[5] = 2;
 
         //When
-        ((ArrayList) numbers).add(4);
-        ((ArrayList) numbers).add(2);
-        ((ArrayList) numbers).add(6);
+
+
 
         //Then
-        ((ArrayList) numbers).getAverage();
+
     }
 }
