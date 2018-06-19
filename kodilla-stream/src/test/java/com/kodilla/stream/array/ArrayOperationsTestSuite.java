@@ -3,20 +3,21 @@ package com.kodilla.stream.array;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 public class ArrayOperationsTestSuite {
     @Test
     public void testGetAverage() {
         //Given
-        List<int> numbers = new ArrayList<>();
+        int[] numbers = new int[5];
+        numbers[0] = 4;
+        numbers[1] = 6;
+        numbers[2] = 5;
+        numbers[3] = 5;
+        numbers[4] = 2;
 
         //When
-        ((ArrayList) numbers).add(4);
-        ((ArrayList) numbers).add(2);
-        ((ArrayList) numbers).add(6);
+        double testedMedian = ArrayOperations.getAverage(numbers);
 
         //Then
-        ((ArrayList) numbers).getAverage();
+        Assert.assertEquals(4.4, testedMedian, 0.1);
     }
 }
