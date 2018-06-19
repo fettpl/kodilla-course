@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
 
 public class BoardTestSuite {
@@ -139,10 +140,18 @@ public class BoardTestSuite {
     @Test
     public void testAddTaskListAverageWorkingOnTask() {
         //Given
-
+        Board project = prepareTestData();
 
         //WHen
-
+        List<TaskList> doneTasks = new ArrayList<>();
+        doneTasks.add(new TaskList("Done"));
+        long daysBetween = DAYS.between(Task.getCreated(), Task.getDeadline());
+        double averageDaysOnTask = project.getTaskLists().stream()
+                .filter(doneTasks::contains)
+                .flatMap(dt -> dt.getTasks().stream())
+                .map(t -> t.daysBetween())
+                .mapToDouble(i -> i)
+                .average();
 
         //Then
 
