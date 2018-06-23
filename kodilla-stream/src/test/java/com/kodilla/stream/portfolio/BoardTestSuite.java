@@ -3,8 +3,10 @@ package com.kodilla.stream.portfolio;
 import org.junit.Assert;
 import org.junit.Test;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
@@ -127,7 +129,7 @@ public class BoardTestSuite {
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
         long longTasks = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
+                .filter(t -> inProgressTasks.contains(t))
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(t -> t.getCreated())
                 .filter(d -> d.compareTo(LocalDate.now().minusDays(10)) <= 0)
@@ -137,23 +139,25 @@ public class BoardTestSuite {
         Assert.assertEquals(2, longTasks);
     }
 
+    Function<Task, Integer> dayCalculator = task -> (int) ChronoUnit.DAYS.between(task.getCreated(), task.getDeadline());
+
     @Test
     public void testAddTaskListAverageWorkingOnTask() {
         //Given
         Board project = prepareTestData();
 
         //WHen
-        List<TaskList> doneTasks = new ArrayList<>();
-        doneTasks.add(new TaskList("Done"));
-        long daysBetween = DAYS.between(Task.getCreated(), Task.getDeadline());
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
         double averageDaysOnTask = project.getTaskLists().stream()
-                .filter(doneTasks::contains)
+                .filter(inProgressTasks::contains)
                 .flatMap(dt -> dt.getTasks().stream())
-                .map(t -> t.daysBetween())
+                .map(dayCalculator)
                 .mapToDouble(i -> i)
-                .average();
+                .average()
+                .orElseThrow(() -> new RuntimeException());
 
         //Then
-
+        Assert.assertEquals(18.3, averageDaysOnTask, 0.1);
     }
 }
