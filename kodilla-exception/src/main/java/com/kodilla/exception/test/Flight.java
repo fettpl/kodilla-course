@@ -16,12 +16,4 @@ public class Flight {
     public String getArrivalAirport() {
         return arrivalAirport;
     }
-
-    public boolean isFlightAllowed() {
-        if(arrivalAirport == "Los Angeles" || "Warsaw") {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }
