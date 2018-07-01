@@ -21,7 +21,12 @@ public class BookLibrary {
             return bookList;
     }
 
-    public Map<Book, LibraryUser> listBooksInHandsOf(LibraryUser libraryUser) {
-
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
+            List<Book> borrowedBookList = new ArrayList<Book>();
+            if (borrowedBookList.isEmpty()) return borrowedBookList;
+            List<Book> resultList = libraryDatabase
+                    .listBooksInHandsOf(libraryUser);
+            borrowedBookList = resultList;
+            return borrowedBookList;
     }
 }

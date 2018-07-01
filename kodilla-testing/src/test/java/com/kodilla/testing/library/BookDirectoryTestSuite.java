@@ -98,13 +98,13 @@ public class BookDirectoryTestSuite {
         Book book2 = new Book("Tooth and Claw", "Graham Masterton", 1997);
         Book book3 = new Book("The Terror", "Graham Masterton", 1998);
         Book book4 = new Book("Snowman", "Graham Masterton", 1999);
-        LibraryUser user1 = new LibraryUser("John", "Doe", 12345678901);
-        LibraryUser user2 = new LibraryUser("Jane", "Dove", 56789012345);
+        LibraryUser user1 = new LibraryUser("John", "Doe", "12345");
+        LibraryUser user2 = new LibraryUser("Jane", "Dove", "67890");
         resultListOfBorrowedBooks.put(book1, user1);
         resultListOfBorrowedBooks.put(book2, user1);
         resultListOfBorrowedBooks.put(book3, user1);
         resultListOfBorrowedBooks.put(book4, user2);
-        when(libraryDatabaseMock.listBooksInHandsOf(user1)
+        when(libraryDatabaseMock.listBooksInHandsOf(user1))
                 .thenReturn(resultListOfBorrowedBooks);
 
         // When
@@ -113,7 +113,7 @@ public class BookDirectoryTestSuite {
         // Then
         assertEquals(4, theListOfBooks.size());
     }
-
+    /* Further tests to finish
     @Test
     public void testListBooksInHandsOfUserWithNoBooks() {
         //Given
@@ -153,5 +153,5 @@ public class BookDirectoryTestSuite {
 
         //Then
 
-    }
+    } */
 }
