@@ -1,5 +1,9 @@
 package com.kodilla.testing.library;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class BookLibrary {
     LibraryDatabase libraryDatabase;
 
@@ -15,5 +19,9 @@ public class BookLibrary {
             if (resultList.size() > 20) return bookList;
             bookList = resultList;
             return bookList;
+    }
+
+    public Map<Book, LibraryUser> listBooksInHandsOf(LibraryUser libraryUser) {
+
     }
 }
