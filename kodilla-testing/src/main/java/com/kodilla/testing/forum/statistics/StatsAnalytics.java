@@ -1,49 +1,44 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.ArrayList;
-import java.util.List;
+public class StatsAnalytics {
+    private int numberOfUsers;
+    private int numberOfPosts;
+    private int numberOfComments;
+    private double averagePostsPerUser;
+    private double averageCommentsPerPost;
+    private double averageCommentsPerUser;
 
-public class StatsAnalytics implements Statistics {
-
-    @Override
-    public List<String> usersNames() {
-        return null;
+    public void calculateAdvStatistics(Statistics statistics) {
+        numberOfUsers = statistics.usersNames().size();
+        numberOfPosts = statistics.postsCount();
+        numberOfComments = statistics.commentsCount();
+        averagePostsPerUser = (double) numberOfPosts / numberOfUsers;
+        averageCommentsPerPost = (double) numberOfComments / numberOfPosts;
+        averageCommentsPerUser = (double) numberOfComments / numberOfUsers;
     }
 
-    public int usersCount() {
-        return usersNames().size();
+    public int getNumberOfUsers() {
+        return numberOfUsers;
     }
 
-    public List<String> postsList() {
-        return null;
+    public int getNumberOfPosts() {
+        return numberOfPosts;
     }
 
-    @Override
-    public int postsCount() {
-        return postsList().size();
+    public int getNumberOfComments() {
+        return numberOfComments;
     }
 
-    public List<String> commentsList() {
-        return null;
+    public Double getAveragePostsPerUser() {
+        return averagePostsPerUser;
     }
 
-    @Override
-    public int commentsCount() {
-        return commentsList().size();
+    public Double getAverageCommentsPerPost() {
+        return averageCommentsPerPost;
     }
 
-    public int calculateAdvStatistics(Statistics statistics) {
-        int averagePostsPerUser = postsCount() / usersCount();
-
-        int averageCommentsPerUser = commentsCount() / usersCount();
-
-        int averageCommentsPerPost = commentsCount() / postsCount();
-
-        return List<int> advStatistics = new ArrayList<>(){
-            advStatistics.add(averagePostsPerUser);
-            advStatistics.add(averageCommentsPerUser);
-            advStatistics.add(averageCommentsPerPost);
-        };
+    public Double getAverageCommentsPerUser() {
+        return averageCommentsPerUser;
     }
 
     public void showStatistics() {
