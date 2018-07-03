@@ -21,12 +21,10 @@ public class BookLibrary {
             return bookList;
     }
 
-    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
-            List<Book> borrowedBookList = new ArrayList<Book>();
-            if (borrowedBookList.isEmpty()) return borrowedBookList;
-            List<Book> resultList = libraryDatabase
-                    .listBooksInHandsOf(libraryUser);
-            borrowedBookList = resultList;
-            return borrowedBookList;
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser){
+
+        List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
+        resultList.forEach(System.out::println);
+        return resultList;
     }
 }
