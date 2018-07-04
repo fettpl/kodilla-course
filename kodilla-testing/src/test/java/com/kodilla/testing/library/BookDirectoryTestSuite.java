@@ -3,14 +3,24 @@ package com.kodilla.testing.library;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class BookDirectoryTestSuite {
+    private List<Book> generateListOfNBooks(int booksQuantity) {
+        List<Book> resultList = new ArrayList<Book>();
+        for (int n = 1; n <= booksQuantity; n++) {
+            Book theBook = new Book("Title " + n, "Author " + n, 1970 + n);
+            resultList.add(theBook);
+        }
+        return resultList;
+    }
+
     @Test
     public void testListBooksWithConditionsReturnList() {
         // Given
@@ -33,15 +43,6 @@ public class BookDirectoryTestSuite {
 
         // Then
         assertEquals(4, theListOfBooks.size());
-    }
-
-    private List<Book> generateListOfNBooks(int booksQuantity) {
-        List<Book> resultList = new ArrayList<Book>();
-        for(int n = 1; n <= booksQuantity; n++){
-            Book theBook = new Book("Title " + n, "Author " + n, 1970 + n);
-            resultList.add(theBook);
-        }
-        return resultList;
     }
 
     @Test
@@ -86,4 +87,77 @@ public class BookDirectoryTestSuite {
         assertEquals(0, theListOfBooks10.size());
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
+
+    @Test
+    public void testListBooksInHandsOfUserWithFiveBooks() {
+        //Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+
+        Book book1 = new Book("Rook", "Graham Masterton", 1997);
+        Book book2 = new Book("Tooth and Claw", "Graham Masterton", 1997);
+        Book book3 = new Book("The Terror", "Graham Masterton", 1998);
+        Book book4 = new Book("Snowman", "Graham Masterton", 1999);
+        Book book5 = new Book("Swimmer", "Graham Masterton", 2001);
+        LibraryUser libraryUser = new LibraryUser("John", "Doe", "12345");
+
+        List<Book> booksToReturn = new ArrayList<>();
+        booksToReturn.add(book1);
+        booksToReturn.add(book2);
+        booksToReturn.add(book3);
+        booksToReturn.add(book4);
+        booksToReturn.add(book5);
+
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser))
+                .thenReturn(booksToReturn);
+
+        // When
+        List<Book> theListOfBooks = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        // Then
+        assertEquals(5, theListOfBooks.size());
+    }
+
+    @Test
+    public void testListBooksInHandsOfUserWithOneBook() {
+        //Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+
+        Book book1 = new Book("Rook", "Graham Masterton", 1997);
+        LibraryUser libraryUser = new LibraryUser("John", "Doe", "12345");
+
+        List<Book> booksToReturn = new ArrayList<>();
+        booksToReturn.add(book1);
+
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser))
+                .thenReturn(booksToReturn);
+
+        // When
+        List<Book> theListOfBooks = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        // Then
+        assertEquals(1, theListOfBooks.size());
+    }
+
+    @Test
+    public void testListBooksInHandsOfUserWithNoBooks() {
+        //Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+
+        LibraryUser libraryUser = new LibraryUser("John", "Doe", "12345");
+
+        List<Book> booksToReturn = new ArrayList<>();
+
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser))
+                .thenReturn(booksToReturn);
+
+        // When
+        List<Book> theListOfBooks = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        // Then
+        assertEquals(0, theListOfBooks.size());
+    }
+
 }

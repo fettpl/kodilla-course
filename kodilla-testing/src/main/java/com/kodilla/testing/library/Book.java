@@ -6,26 +6,26 @@ public class Book {
     int publicationYear;
 
     public Book(String title, String author, int publicationYear) {
-        this.title = title;
-        this.author = author;
-        this.publicationYear = publicationYear;
+            this.title = title;
+            this.author = author;
+            this.publicationYear = publicationYear;
     }
 
     public String getTitle() {
-        return title;
+            return title;
     }
 
     public String getAuthor() {
-        return author;
+            return author;
     }
 
     public int getPublicationYear() {
-        return publicationYear;
+            return publicationYear;
     }
 
     @Override
     public String toString() {
-        return "Book{" +
+            return "Book{" +
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", publicationYear=" + publicationYear +
@@ -34,21 +34,21 @@ public class Book {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Book)) return false;
+            if (this == o) return true;
+            if (!(o instanceof Book)) return false;
 
-        Book book = (Book) o;
+            Book book = (Book) o;
 
-        if (publicationYear != book.publicationYear) return false;
-        if (!title.equals(book.title)) return false;
-        return author.equals(book.author);
+            if (publicationYear != book.publicationYear) return false;
+            if (!title.equals(book.title)) return false;
+            return author.equals(book.author);
     }
 
     @Override
     public int hashCode() {
-        int result = title.hashCode();
-        result = 31 * result + author.hashCode();
-        result = 31 * result + publicationYear;
-        return result;
+            int result = title.hashCode();
+            result = 31 * result + author.hashCode();
+            result = 31 * result + publicationYear;
+            return result;
     }
 }
