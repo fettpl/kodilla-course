@@ -1,7 +1,6 @@
 package com.kodilla.good.patterns.challenges;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 class MovieStore {
 
@@ -26,12 +25,10 @@ class MovieStore {
 
         return booksTitlesWithTranslations;
     }
+}
 
-    public static String main(String [] args) {
-        MovieStore movieStore = new MovieStore();
-        String listOfMovies = movieStore.getMovies().values().stream()
-                .forEach(f -> System.out.println(f));
-
-
-    }
+public static void main(String [] args) {
+    MovieStore movieStore = new MovieStore();
+    String listOfMovies = movieStore.getMovies().values().stream()
+            .forEach(f -> System.out.println(f));
 }
