@@ -3,23 +3,23 @@ package com.kodilla.good.patterns.challenges;
 import java.time.LocalDateTime;
 
 public class OrderProcessor {
-    private InformationService informationService;
-    private OrderService orderService;
-    private OrderRepository orderRepository;
+    private ProductInformationService productInformationService;
+    private ProductOrderService productOrderService;
+    private ProductOrderRepository productOrderRepository;
 
-    public OrderProcessor(final InformationService informationService, final OrderService orderService,
-                          final OrderRepository orderRepository) {
-        this.informationService = informationService;
-        this.orderService = orderService;
-        this.orderRepository = orderRepository;
+    public OrderProcessor(ProductInformationService productInformationService, ProductOrderService productOrderService,
+                          ProductOrderRepository productOrderRepository) {
+        this.productInformationService = productInformationService;
+        this.productOrderService = productOrderService;
+        this.productOrderRepository = productOrderRepository;
     }
 
     public OrderDto process(final OrderRequest orderRequest) {
-        boolean isSold = orderService.sell(orderRequest.getUser(), orderRequest.getProduct(),
+        boolean isSold = productOrderService.sell(orderRequest.getUser(), orderRequest.getProduct(),
                 orderRequest.getOrderDate());
         if (isSold) {
-            informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getProduct(), orderRequest.getOrderDate());
+            productInformationService.inform(orderRequest.getUser());
+            productOrderRepository.createOrder(orderRequest.getUser(), orderRequest.getProduct(), orderRequest.getOrderDate());
             return new OrderDto(orderRequest.getUser(), true);
         } else {
             return new OrderDto(orderRequest.getUser(), false);

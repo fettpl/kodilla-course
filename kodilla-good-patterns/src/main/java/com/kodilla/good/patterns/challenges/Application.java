@@ -5,8 +5,8 @@ public class Application {
         OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
         OrderRequest orderRequest = orderRequestRetriever.retrieve();
 
-        OrderProcessor orderProcessor = new OrderProcessor(new InformationService(), new OrderService(),
-                new OrderRepository());
+        OrderProcessor orderProcessor = new OrderProcessor(new ProductInformationService(), new ProductOrderService(),
+                new ProductOrderRepository());
         orderProcessor.process(orderRequest);
     }
 }
