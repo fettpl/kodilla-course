@@ -20,4 +20,9 @@ public class BoardConfig {
     public TaskList doneList() {
         return new TaskList();
     }
+
+    @Bean
+    public Board board() {
+        return new Board(toDoList(), inProgressList(), doneList());
+    }
 }
