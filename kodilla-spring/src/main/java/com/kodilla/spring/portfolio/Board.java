@@ -10,4 +10,16 @@ public class Board {
         this.inProgressList = inProgressList;
         this.doneList = doneList;
     }
+
+    public void addTaskToDoList() {
+        toDoList.addTask();
+    }
+
+    public void addTaskInProgressList() {
+        inProgressList.addTask();
+    }
+
+    public void addTaskDoneList() {
+        doneList.addTask();
+    }
 }
