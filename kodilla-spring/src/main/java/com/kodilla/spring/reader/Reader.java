@@ -1,7 +1,7 @@
 package com.kodilla.spring.reader;
 
 public final class Reader {
-    final Book theBook;
+    private final Book theBook;
 
     public Reader(final Book theBook) {
         this.theBook = theBook;
