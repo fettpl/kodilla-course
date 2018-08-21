@@ -19,6 +19,7 @@ public class TaskListDaoTestSuite {
     @Autowired
     private TaskListDao taskListDao;
     private static final String DESCRIPTION = "Test: Create TaskList";
+    private static final String LISTNAME = "Test: ListName";
 
     @Test
     public void testFindByListName() {
@@ -61,6 +62,6 @@ public class TaskListDaoTestSuite {
         Assert.assertNotEquals(0, id);
 
         //CleanUp
-        //taskListDao.delete(id);
+        taskListDao.deleteById(id);
     }
 }
