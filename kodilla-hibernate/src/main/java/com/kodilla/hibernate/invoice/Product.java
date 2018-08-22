@@ -1,14 +1,17 @@
 package com.kodilla.hibernate.invoice;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "PRODUCTS")
 public class Product {
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
-    private Item item;
 
     public Product() {
 
@@ -28,13 +31,5 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
     }
 }
