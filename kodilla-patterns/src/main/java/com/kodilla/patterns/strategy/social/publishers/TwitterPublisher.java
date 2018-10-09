@@ -1,4 +1,6 @@
-package com.kodilla.patterns.strategy.social;
+package com.kodilla.patterns.strategy.social.publishers;
+
+import com.kodilla.patterns.strategy.social.publishers.SocialPublisher;
 
 public class TwitterPublisher implements SocialPublisher {
     @Override
