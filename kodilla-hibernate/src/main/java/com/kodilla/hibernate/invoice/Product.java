@@ -8,8 +8,6 @@ import java.util.List;
 @Entity
 @Table(name = "PRODUCTS")
 public class Product {
-    @Id
-    @GeneratedValue
     private int id;
     private String name;
     private List<Item> items = new ArrayList<>();
@@ -46,6 +44,7 @@ public class Product {
     @OneToMany(
             targetEntity = Item.class,
             mappedBy = "product",
+            cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
     public List<Item> getItems() {

@@ -7,8 +7,6 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "ITEMS")
 public class Item {
-    @Id
-    @GeneratedValue
     private int id;
     @ManyToOne
     @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID")
