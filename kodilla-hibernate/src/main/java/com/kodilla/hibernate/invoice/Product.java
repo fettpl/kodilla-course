@@ -43,6 +43,11 @@ public class Product {
         this.name = name;
     }
 
+    @OneToMany(
+            targetEntity = Item.class,
+            mappedBy = "product",
+            fetch = FetchType.LAZY
+    )
     public List<Item> getItems() {
         return items;
     }
