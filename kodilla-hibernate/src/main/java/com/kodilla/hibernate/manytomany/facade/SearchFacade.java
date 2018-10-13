@@ -15,14 +15,14 @@ public class SearchFacade {
     @Autowired
     private CompanyDao companyDao;
 
-    public List<String> employeeFindByName(String lastname) {
-        return employeeDao.retrieveEmployeeByLastName(lastname).stream()
+    public List<String> employeeFindByName(String arg) {
+        return employeeDao.retrieveEmployeeByAnyName(arg).stream()
                 .map(e -> e.getLastname())
                 .collect(Collectors.toList());
     }
 
-    public List<String> companyFindByNameBeginning(String prefix) {
-        return companyDao.findCompaniesWithNameThatStartsWith(prefix).stream()
+    public List<String> companyFindByNamePart(String arg) {
+        return companyDao.retrieveCompanyByAnyName(arg).stream()
                 .map(c -> c.getName())
                 .collect(Collectors.toList());
     }

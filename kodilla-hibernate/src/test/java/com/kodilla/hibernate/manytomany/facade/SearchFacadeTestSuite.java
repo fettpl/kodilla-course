@@ -35,11 +35,10 @@ public class SearchFacadeTestSuite {
         employeeDao.save(lindaKovalsky);
 
         // When
-        List<String> findByLastname = searchFacade.employeeFindByName("Kovalsky");
+        List<String> findByName = searchFacade.employeeFindByName("Steph");
 
         // Then
-        Assert.assertTrue(findByLastname.contains("Kovalsky"));
-        Assert.assertEquals(1, findByLastname.size());
+        Assert.assertEquals(1, findByName.size());
 
         // CleanUp
         try {
@@ -63,7 +62,7 @@ public class SearchFacadeTestSuite {
         companyDao.save(dataMatter);
 
         // When
-        List<String> findByPrefix = searchFacade.companyFindByNameBeginning("Dat");
+        List<String> findByPrefix = searchFacade.companyFindByNamePart("Data");
 
         // Then
         Assert.assertEquals(2, findByPrefix.size());
