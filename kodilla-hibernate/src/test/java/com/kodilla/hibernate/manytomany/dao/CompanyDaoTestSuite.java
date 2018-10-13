@@ -77,7 +77,7 @@ public class CompanyDaoTestSuite {
         employeeDao.save(lindaKovalsky);
 
         // When
-        List<Employee> retrieveEmployeeByName = employeeDao.retrieveEmployeeByLastName("Kovalsky");
+        List<Employee> retrieveEmployeeByName = employeeDao.retrieveEmployeeByAnyName("Steph");
 
         // Then
         Assert.assertEquals("Kovalsky", retrieveEmployeeByName.get(0).getLastname());
