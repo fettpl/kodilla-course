@@ -29,16 +29,18 @@ public class SearchFacadeTestSuite {
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+        Employee adamStephenson = new Employee("Adam", "Stephenson");
 
         employeeDao.save(johnSmith);
         employeeDao.save(stephanieClarckson);
         employeeDao.save(lindaKovalsky);
+        employeeDao.save(adamStephenson);
 
         // When
         List<String> findByName = searchFacade.employeeFindByName("Steph");
 
         // Then
-        Assert.assertEquals(1, findByName.size());
+        Assert.assertEquals(2, findByName.size());
 
         // CleanUp
         try {
