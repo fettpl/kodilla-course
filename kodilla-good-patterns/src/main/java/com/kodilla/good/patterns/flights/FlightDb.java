@@ -1,4 +1,4 @@
-package com.kodilla.patterns.flights;
+package com.kodilla.good.patterns.flights;
 
 import java.util.List;
 

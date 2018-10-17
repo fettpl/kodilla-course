@@ -1,4 +1,4 @@
-package com.kodilla.patterns.flights;
+package com.kodilla.good.patterns.flights;
 
 public class Flight {
     private final int flightNumber;
